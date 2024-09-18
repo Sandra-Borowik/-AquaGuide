@@ -1,0 +1,102 @@
+﻿@page
+@model AquaGuide2.Pages.UserBase.IndexModel
+@{
+}
+<link href="~/fontawesome/css/all.css" rel="stylesheet" />
+
+<form method="get" asp-page="Index">
+        <div class="row">
+            <div class="col-md-11">
+                <section style="background-color:black; margin-top:3.0em; margin-left:20.0em">
+                    <div class="container row p-0 m-0">
+                        <div style="margin-left:32.0em">
+                            <h1 class="text-white">Users:</h1>
+                        </div>
+
+                        <div class="container border">
+                            <div class=" border align-content-center" style="background-color:black">
+                                <div class="col-3" style="margin-left:-0.5em; background-color:black">
+                                    <a class="btn btn-sm form-control btn-info-outline" asp-page="/Account/Register" asp-area="Identity">Create New</a>
+                                </div>
+                            </div>
+                            <div style="height:55px;" class="container border">
+                                <div class="row">
+                                    <div class="col-12 align-center">
+                                        <div class="row" style="padding-top:10px">
+                                            <div class="col-2">
+                                                @Html.Editor("searchID", new { htmlAttributes = new { @class = "from-control", placeholder = "Search by ID" } })
+                                            </div>
+                                            <div class="col-2">
+                                                @Html.Editor("searchNickname", new { htmlAttributes = new { @class = "from-control", placeholder = "Nickname" } })
+                                            </div>
+                                            <div class="col-2">
+                                                @Html.Editor("searchEmail", new { htmlAttributes = new { @class = "from-control", placeholder = "Email" } })
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="row align-content" style="height:20px; padding-bottom:4px; margin-left:1px;">
+                                                    <button type="submit"
+                                                            name="submit"
+                                                            value="Search"
+                                                            class="btn col-sm-2 btn-sm "
+                                                            style="height:30px; margin-top:-0.5em; margin-bottom:-0.5em; padding:2px; border-radius: 15px; font-size: 15px; border: 2px solid #333029;">
+                                                        Search
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <table class="table border align-bottom">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.UsersListVM.ApplicationUserList[0].Id)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.UsersListVM.ApplicationUserList[0].Nickname)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.UsersListVM.ApplicationUserList[0].Email)
+                                        </th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.UsersListVM.ApplicationUserList)
+                                    {
+                                        <tr style="opacity:0.6; height:30px">
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Id)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Nickname)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Email)
+                                            </td>
+                                            <td></td>
+                                            <td style="opacity:0.9" class="row">
+                                                <a class="btn btn-sm col-5 form-control" style="margin-top:-0.5em; margin-right:4px; margin-bottom:-0.5em; padding: 3px 5px; border-radius: 15px; font-size: 15px;  border: 2px solid #333029;" asp-page="Edit" asp-route-id="@item.UserName">Edit</a> |
+                                                <a class="btn btn-sm col-5 form-control" style="margin-top:-0.5em; margin-left:4px; margin-bottom:-0.5em; padding: 3px 2px; border-radius: 15px; font-size: 15px; border: 2px solid #333029;" asp-page="Delete" asp-route-id="@item.UserName">Delete</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                    <tr>
+                                        <td colspan="5" class="text-right" style="height:40px;">
+                                            <div page-model="@Model.UsersListVM.PagingInfo" asp-action="Index" page-class="btn border"
+                                                 page-class-normal="btn btn-light" page-class-selected="btn btn-info active" class="btn-group" style="height:50px;">
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+</form>

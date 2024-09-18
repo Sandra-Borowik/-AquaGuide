@@ -1,0 +1,57 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using AquaGuide2.Utility
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+<ul class="nav nav-right" data-app-modern-menu="true" style="background-color:black">
+
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <a class="nav-link link text-white" asp-area="" asp-page="/Aquaguide/Informations">Fishes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link link text-white" asp-area="" asp-page="/AquaGuide/Parameters">About Parameters</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@User.Identity.Name</a>
+        </li>
+        <li class="nav-item">
+            <form class="nav-link link text-white" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                <button type="submit"
+                        style="
+          background: linear-gradient(to bottom, #000000 5%, #474747 100%);
+          background-color: #000000;
+          border-radius: 10px;
+          border: 2px solid #333029;
+          display: inline-block;
+          cursor: pointer;
+          color: #ffffff;
+          font-family: Arial;
+          font-size: 10px;
+          font-weight: bold;
+          padding: 3px 10px;
+          text-decoration: none;">
+                    Logout
+                </button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link link text-white" asp-area="" asp-page="/AquaGuide/Informations">Fishes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link link text-white" asp-area="" asp-page="/AquaGuide/Parameters">About Parameters</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link link text-white" asp-area="Identity" asp-page="/Account/Register">Register    </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link link text-white" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </li>
+    }
+
+</ul>

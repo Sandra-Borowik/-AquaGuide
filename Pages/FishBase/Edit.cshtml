@@ -1,0 +1,45 @@
+﻿@page
+@model AquaGuide2.Pages.FishBase.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row">
+    <div class="container border col-md-3" style="background-color:black">
+        <h1>Edit Info</h1>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Fish.ID" />
+            <div class="form-group">
+                <label asp-for="Fish.Species" class="control-label"></label>
+                <input asp-for="Fish.Species" class="form-control" />
+                <span asp-validation-for="Fish.Species" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fish.Attitude" class="control-label"></label>
+                <input asp-for="Fish.Attitude" class="form-control" />
+                <span asp-validation-for="Fish.Attitude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fish.Feeding" class="control-label"></label>
+                <input asp-for="Fish.Feeding" class="form-control" />
+                <span asp-validation-for="Fish.Feeding" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fish.Amount" class="control-label"></label>
+                <input asp-for="Fish.Amount" class="form-control" />
+                <span asp-validation-for="Fish.Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-success" />
+                <a class="btn btn-info" style="margin-left:1.0em" asp-page="./Index">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,80 @@
+﻿@page
+@model AquaGuide2.Pages.ParameterBase.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+        <div class="row">
+            <div class="container border col-md-3" style="background-color:black">
+                <h1>Edit Parameters</h1>
+
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Parameter.ID" />
+                    <div class="form-group">
+                        <label asp-for="Parameter.Name" class="control-label"></label>
+                        <input asp-for="Parameter.Name" class="form-control" />
+                        <span asp-validation-for="Parameter.Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Parameter.Size" class="control-label"></label>
+                        <input asp-for="Parameter.Size" class="form-control" />
+                        <span asp-validation-for="Parameter.Size" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Parameter.PH" class="control-label"></label>
+                        <input asp-for="Parameter.PH" class="form-control" />
+                        <span asp-validation-for="Parameter.PH" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Parameter.Type" class="control-label"></label>
+                        <input asp-for="Parameter.Type" class="form-control" />
+                        <span asp-validation-for="Parameter.Type" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Parameter.TDS" class="control-label"></label>
+                        <input asp-for="Parameter.TDS" class="form-control" />
+                        <span asp-validation-for="Parameter.TDS" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Parameter.KH" class="control-label"></label>
+                        <input asp-for="Parameter.KH" class="form-control" />
+                        <span asp-validation-for="Parameter.KH" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Parameter.GH" class="control-label"></label>
+                        <input asp-for="Parameter.GH" class="form-control" />
+                        <span asp-validation-for="Parameter.GH" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Parameter.Temperature" class="control-label"></label>
+                        <input asp-for="Parameter.Temperature" class="form-control" />
+                        <span asp-validation-for="Parameter.Temperature" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Parameter.Description" class="control-label"></label>
+                        <input asp-for="Parameter.Description" class="form-control" />
+                        <span asp-validation-for="Parameter.Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Parameter.Date" class="control-label"></label>
+                        <input asp-for="Parameter.Date" class="form-control" />
+                        <span asp-validation-for="Parameter.Date" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Parameter.Share" class="control-label"></label>
+                        <input type="checkbox" asp-for="Parameter.Share" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-success" />
+                        <a class="btn btn-info" style="margin-left:1.0em" asp-page="./Index">Back to List</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

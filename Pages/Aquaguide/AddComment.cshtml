@@ -1,0 +1,74 @@
+﻿@page
+@model AquaGuide.Pages.Database.AddCommentModel
+@{
+    ViewData["Title"] = "AddComment";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Add Your comment!</h1>
+
+<br />
+<br />
+
+<div>
+    <h2 class="text-info">Comment:</h2>
+
+    <form method="post">
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Comment.Author"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Comment.Author" class="form-control" />
+            </div>
+            <span asp-validation-for="Comment.Author" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Comment.Text"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Comment.Text" class="form-control" />
+            </div>
+            <span asp-validation-for="Comment.Text" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Comment.Rating"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Comment.Rating" class="form-control" />
+            </div>
+            <span asp-validation-for="Comment.Rating" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Comment.PostId"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Comment.PostId" class="form-control" />
+            </div>
+            <span asp-validation-for="Comment.PostId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-5 offset-2">
+                <div class="row">
+                    <div class="col-6">
+                        <input type="submit" class="btn btn-info form-control" value="Comment" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+
+@section scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

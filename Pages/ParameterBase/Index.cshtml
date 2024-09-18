@@ -1,0 +1,83 @@
+﻿@page
+@model AquaGuide2.Pages.ParameterBase.IndexModel
+@using System.Security.Claims;
+@{
+    ViewData["Title"] = "Index";
+}
+@{ 
+    string url = "https://" + HttpContext.Request.Host.Value + "/ParameterBase/Shared?id="+ User.FindFirst(ClaimTypes.NameIdentifier).Value;
+}
+<body style="margin-left:25.0em">
+    <div class="row">
+        <div class="col-md-7">
+            <section style="background-color:black; margin-top:3.0em">
+                <div class="container row p-0 m-0">
+                    <div style="margin-left:25.0em">
+                        <h1 class="text-white">Your parameters:</h1>
+                    </div>
+
+                    <div class="container border">
+                        <div class="col-lg-2" style="margin-left:-1.5em">
+                            <a class="btn btn-sm form-control" asp-page="Create">Create New</a>
+                        </div>
+                        <table class="table border align-bottom">
+                            <thead>
+                                <tr>
+                                    <th class="text-white">
+                                        @Html.DisplayNameFor(model => model.Parameter[0].Name)
+                                    </th>
+                                    <th class="align-center">
+                                        @Html.DisplayNameFor(model => model.Parameter[0].Temperature)
+                                    </th>
+                                    <th class="align-center">
+                                        @Html.DisplayNameFor(model => model.Parameter[0].PH)
+                                    </th>
+                                    <th class="align-center">
+                                        @Html.DisplayNameFor(model => model.Parameter[0].Date)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Parameter)
+                                {
+                                    <tr style="opacity:0.8">
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+                                        <td class="align-center">
+                                            @Html.DisplayFor(modelItem => item.Temperature)
+                                        </td>
+                                        <td class="align-center">
+                                            @Html.DisplayFor(modelItem => item.PH)
+                                        </td>
+                                        <td class="align-center">
+                                            @Html.DisplayFor(modelItem => item.Date)
+                                        </td>
+                                        <td style="opacity:0.9">
+                                            <a class="btn btn-sm col-sm-2 form-control" style="margin-top:-0.5em; margin-bottom:-0.5em; padding: 3px 5px; border-radius: 15px; font-size: 15px; border: 2px solid #333029;" asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                                            <a class="btn btn-sm col-sm-2 form-control" style="margin-top:-0.5em; margin-bottom:-0.5em; padding: 3px 5px; border-radius: 15px; font-size: 14px; border: 2px solid #333029;" asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                                            <a class="btn btn-sm col-sm-2 form-control" style="margin-top:-0.5em; margin-bottom:-0.5em; padding: 3px 2px; border-radius: 15px; font-size: 15px; border: 2px solid #333029;" asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-5 col-md-offset-2" style="opacity:0.9; margin-left:-3em;">
+            <section style="background-color:black">
+                <div class="align-content-center" style="background-color:black; margin-left:150px; margin-top:3em;">
+                    <h2 style="font-size:30px; ">You can share your parameters by this link:</h2>
+                    <h3 class="border col-lg-10" style="color:cornflowerblue; font-size:15px; opacity:0.5; margin-top:2em;">@url</h3>
+                    <div class="row">
+                        <a class="col-2 btn btn-sm form-control" style="border-radius: 15px; font-size: 15px; border: 2px solid #333029;">Copy</a>
+                    </div>
+                </div>
+                <img style="opacity:0.5;" src="https://i.ibb.co/Y3vgCCH/Bez-tytu-u.png" height="550" width="400">
+            </section>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,62 @@
+﻿@page
+@model AquaGuide2.Pages.ParameterBase.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <div class="row" style="margin-left:22em;">
+        <div class="col-md-11">
+                <div class="container row p-0 m-0">
+                    <div style="margin-left:25.0em">
+                        <h1 class="text-white">Shared parameters:</h1>
+                    </div>
+
+                    <div class="container border">
+                        <table class="table border align-bottom"  style="margin-top:1em;">
+                            <thead>
+                                <tr>
+                                    <th class="text-white">
+                                        @Html.DisplayNameFor(model => model.Parameter[0].Name)
+                                    </th>
+                                    <th class="align-center">
+                                        @Html.DisplayNameFor(model => model.Parameter[0].Temperature)
+                                    </th>
+                                    <th class="align-center">
+                                        @Html.DisplayNameFor(model => model.Parameter[0].PH)
+                                    </th>
+                                    <th class="align-center">
+                                        @Html.DisplayNameFor(model => model.Parameter[0].Date)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model.Parameter)
+                                {
+                                    @if (item.Share)
+                                    {
+                                        <tr style="opacity:0.8">
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Name)
+                                            </td>
+                                            <td class="align-center">
+                                                @Html.DisplayFor(modelItem => item.Temperature)
+                                            </td>
+                                            <td class="align-center">
+                                                @Html.DisplayFor(modelItem => item.PH)
+                                            </td>
+                                            <td class="align-center">
+                                                @Html.DisplayFor(modelItem => item.Date)
+                                            </td>
+                                            <td style="opacity:0.9">
+                                        </tr>
+                                     }
+                                 }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+        </div>
+    </div>

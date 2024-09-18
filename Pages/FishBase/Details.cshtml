@@ -1,0 +1,43 @@
+﻿@page
+@model AquaGuide2.Pages.FishBase.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="row" style="margin-top:5em; margin-bottom:5em">
+    <div class="container border col-md-3" style="background-color:black">
+        <h1 style="margin-top:0.5em">Fish Details</h1>
+        <dl class="border row" style="margin:0.4em">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Fish.Species)
+            </dt>
+            <div></div>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Fish.Species)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Fish.Attitude)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Fish.Attitude)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Fish.Feeding)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Fish.Feeding)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Fish.Amount)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Fish.Amount)
+            </dd>
+        </dl>
+        <div style="margin:1em">
+            <a class="btn btn-success" asp-page="./Edit" asp-route-id="@Model.Fish.ID">Edit</a>
+            <a class="btn btn-info" style="margin-left:1.0em" asp-page="./Index">Back to List</a>
+        </div>
+    </div>
+</div>

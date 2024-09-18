@@ -1,0 +1,73 @@
+﻿@page
+@model AquaGuide2.Pages.FishBase.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div style="background-color:black">
+    <div class="row">
+        <div class="col-md-7">
+            <section style="background-color:black; margin-top:3.0em">
+                <div class="container row p-0 m-0">
+                    <div style="margin-left:28.0em">
+                        <h1 class="text-white">Your crew:</h1>
+                    </div>
+
+                    <div class="container border">
+                        <div class="col-lg-2" style="margin-left:-1.5em">
+                            <a class="btn btn-sm form-control" asp-page="Create">Create New</a>
+                        </div>
+                        <table class="table border align-bottom">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Fish[0].Species)
+                                    </th> 
+                                    <th class="align-center">
+                                        @Html.DisplayNameFor(model => model.Fish[0].Attitude) 
+                                    </th>
+                                    <th class="align-center">
+                                        @Html.DisplayNameFor(model => model.Fish[0].Feeding) 
+                                    </th>
+                                    <th class="align-center">
+                                        @Html.DisplayNameFor(model => model.Fish[0].Amount) 
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Fish)
+                                {
+                                    <tr style="opacity:0.8">
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Species)
+                                        </td>
+                                        <td class="align-center">
+                                            @Html.DisplayFor(modelItem => item.Attitude)
+                                        </td>
+                                        <td class="align-center">
+                                            @Html.DisplayFor(modelItem => item.Feeding)
+                                        </td>
+                                        <td class="align-center">
+                                            @Html.DisplayFor(modelItem => item.Amount)
+                                        </td>
+                                        <td style="opacity:0.9">
+                                            <a class="btn btn-sm col-sm-2 form-control" style="margin-top:-0.5em; margin-bottom:-0.5em; padding: 3px 5px; border-radius: 15px; font-size: 15px;  border: 2px solid #333029;" asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                                            <a class="btn btn-sm col-sm-2 form-control" style="margin-top:-0.5em; margin-bottom:-0.5em; padding: 3px 5px; border-radius: 15px; font-size: 15px; border: 2px solid #333029;" asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                                            <a class="btn btn-sm col-sm-2 form-control" style="margin-top:-0.5em; margin-bottom:-0.5em; padding: 3px 2px; border-radius: 15px; font-size: 15px; border: 2px solid #333029;" asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-5 col-md-offset-2">
+            <section>
+                <img src="https://image.freepik.com/free-photo/moving-moment-beautiful-betta-fish-black_8043-1379.jpg" height="900" width="400">
+            </section>
+        </div>
+    </div>
+</div>
